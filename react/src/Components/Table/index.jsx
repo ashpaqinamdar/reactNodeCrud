@@ -11,7 +11,8 @@ import "./index.css";
 import Button from "@mui/material/Button";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { FiEdit } from "react-icons/fi";
-import { AiOutlineDelete } from "react-icons/ai";
+import { AiFillFilePdf, AiOutlineBook, AiOutlineDelete } from "react-icons/ai";
+import { BsNewspaper } from "react-icons/bs";
 
 const useStyles = makeStyles({
   table: {
@@ -77,9 +78,30 @@ export default function TableComponent({ books, handleEdit, deleteBook }) {
                   </TableCell>
                   <TableCell align="left">{row.genre}</TableCell>
                   <TableCell align="left">
-                    <div>{row.hardBound && "HardBound"}</div>
-                    <div>{row.paperBack && "Paperback"}</div>
-                    <div>{row.pdf && "PDF"}</div>
+                    <div>
+                      {row.hardBound && (
+                        <span>
+                          <AiOutlineBook style={{ marginRight: 5 }} />
+                          HardBound
+                        </span>
+                      )}
+                    </div>
+                    <div>
+                      {row.paperBack && (
+                        <span>
+                          <BsNewspaper style={{ marginRight: 5 }} />
+                          Paperback
+                        </span>
+                      )}
+                    </div>
+                    <div>
+                      {row.pdf && (
+                        <span>
+                          <AiFillFilePdf style={{ marginRight: 5 }} />
+                          PDF
+                        </span>
+                      )}
+                    </div>
                   </TableCell>
                   <TableCell align="left">{row.price} /-</TableCell>
                   <TableCell align="left">
