@@ -48,3 +48,8 @@ label {
 .PrivateSwitchBase-root-1 {
   padding: 10px 0px !important;
 }
+.errorTags {
+  font-size: 13px;
+  color: red;
+  padding-top: 5px;
+}

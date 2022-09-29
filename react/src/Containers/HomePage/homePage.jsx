@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import TableComponent from "../../Components/Table";
 import Axios from "axios";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 function HomePage() {
   const [books, setBooks] = useState([]);
@@ -22,7 +24,7 @@ function HomePage() {
   };
   const handleEdit = (row) => {
     navigate.push({
-      pathname: "/add-book",
+      pathname: "/edit-book",
       state: {
         data: row,
         edit: true,
@@ -34,9 +36,11 @@ function HomePage() {
     Axios.delete(`http://localhost:3001/delete-book/${id}`)
       .then((res) => {
         getBooks();
+        toast("Book deleted successfully");
       })
       .catch((e) => {
         console.log("errr", e);
+        toast("failed to delete book");
         return "";
       });
   };

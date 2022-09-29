@@ -15,6 +15,7 @@ function AddBookForm({
   onChange,
   handleChangeType,
   handleSubmit,
+  error,
 }) {
   const navigate = useHistory();
   const navigateToHome = () => {
@@ -37,6 +38,9 @@ function AddBookForm({
             value={bookInfo.bookName}
             placeholder="Enter book name"
           />
+          {error.bookNameError && (
+            <div className="errorTags">Please enter book name</div>
+          )}
         </div>
         <div className="inputField">
           <label htmlFor="genre">Genre</label>
@@ -54,6 +58,9 @@ function AddBookForm({
               </MenuItem>
             ))}
           </Select>
+          {error.genreError && (
+            <div className="errorTags">Please select a genre</div>
+          )}
         </div>
 
         <div className="inputFieldGroup">
@@ -69,6 +76,11 @@ function AddBookForm({
             </div>
           ))}
         </div>
+        {error.typeError && (
+          <div style={{ marginTop: "-25px" }} className="errorTags">
+            Please check altleast one type
+          </div>
+        )}
         <div className="inputField">
           <label htmlFor="price">Price (₹)</label>
           <InputBase
@@ -79,13 +91,15 @@ function AddBookForm({
             value={bookInfo.price}
             placeholder="Enter book price"
           />
+          {error.priceError && (
+            <div className="errorTags">Please enter a valid price</div>
+          )}
         </div>
         <Button
           variant="contained"
-          type="submit"
           onClick={() => handleSubmit(bookInfo.id)}
           className="buttonClass"
-          style={{ marginTop: "30px" }}
+          style={{ marginTop: "30px", padding: "6px 16px" }}
         >
           Submit
         </Button>
