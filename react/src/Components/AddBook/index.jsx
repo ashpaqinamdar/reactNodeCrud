@@ -78,7 +78,7 @@ function AddBookForm({
         </div>
         {error.typeError && (
           <div style={{ marginTop: "-25px" }} className="errorTags">
-            Please check altleast one type
+            Please check atleast one option
           </div>
         )}
         <div className="inputField">
